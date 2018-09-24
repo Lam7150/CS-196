@@ -8,9 +8,6 @@ import json
 import csv
 import numpy as np
 
-def main():
-    pyarray = np.array([[1, 1], [2, 2]])
-    reflections_and_projections(pyarray)
 
 def histogram_times(filename):
     # initializing list to track plane crash times
@@ -35,7 +32,7 @@ def histogram_times(filename):
                 plane_crash_times[plane_crash_hour] += 1
 
     return plane_crash_times
-    
+
 
 def weigh_pokemons(filename, weight):
     # initializing pokemon list
@@ -82,12 +79,20 @@ def reflections_and_projections(points):
     points = np.matmul(points, [[1,3], [3,9]])
     points = np.multiply(points, 0.1)
 
+    return points
+
 
 def normalize(image):
-    pass
+    # declaring and initializing image max and mins
+    min = image.min()
+    max = image.max()
+
+    # normalizing image
+    image = np.subtract(image, min)
+    image = np.multiply(image, 255 / (max - min))
+
+    return image
+
 
 def sigmoid_normalize(image):
     pass
-
-if __name__ == "__main__":
-    main()
