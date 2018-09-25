@@ -89,7 +89,7 @@ def normalize(image):
 
     # normalizing image
     image = np.subtract(image, min)
-    image = np.multiply(image, 255 / (max - min))
+    image = round(np.multiply(image, 255 / (max - min)))
 
     return image
 
